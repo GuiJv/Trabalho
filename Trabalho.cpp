@@ -33,7 +33,7 @@ struct product
 	float preco;
 };
 
-struct itenProduct
+struct productItem
 {
 	string produto;
 	string dataCompra;
@@ -121,9 +121,17 @@ product productRegister(){
 	return Produto;
 }
 
-int productItemRegister(){
-	cout << "Funcionou";
-	return 0;
+productItem productItemRegister(){
+	productItem Item;
+	cout << "Qual o produto: ";
+	cin >> Item.produto;
+	cout << "Qual a data da compra: ";
+	cin >> Item.dataCompra;
+	cout << "Qual o valor da compra: ";
+	cin >> Item.valorCompra;
+	cout << "Qual a situação do produto: ";
+	cin >> Item.situacao;
+	return Item;
 }
 
 sale salesRegister(){
@@ -173,7 +181,8 @@ int main(){
 	vector<product> productsVector;
 	vector<user> usersVector;
 	vector<sale> salesVector;
-	setlocale(LC_ALL,"Portuguese");
+	vector<productItem> productItensVector;
+ 	setlocale(LC_ALL,"Portuguese");
 	cout << "Menu de op��es" << endl;
 	cout << "1 - Cadastro de Pessoas \n";
 	cout << "2 - Cadastro de Produtos \n";
@@ -194,7 +203,7 @@ int main(){
 			productsVector.push_back(productRegister());
 			break;
 		case 3:
-			productItemRegister();
+			productItensVector.push_back(productItemRegister());
 			break;
 		case 4:
 			salesVector.push_back(salesRegister());
