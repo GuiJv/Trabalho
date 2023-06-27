@@ -1,6 +1,7 @@
 #include <iostream>
 #include <locale.h>
 #include <vector>
+#include <fstream>
 
 using namespace std;
 
@@ -57,8 +58,140 @@ bool checkSN(char op){
 	}
 	else{
 		return false;
+		}}
+
+void userRegisterText(){
+	ofstream dataFile;
+	string var;
+	dataFile.open("data/userData.txt", std::ios_base::app);
+	if(dataFile.is_open()){
+		cout << "Success \n";
+		cout << "Qual o nome da pessoa: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Qual o cpf da pessoa: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Qual o sexo da pessoa: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Qual a data de nascimento da pessoa: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Qual o time favorito da pessoa: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Qual a seleï¿½ï¿½o favorita da pessoa: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Gosta de Futebol:(S/N) ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Gosta de Volei:(S/N) ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Gosta de Basquete :(S/N) ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Gosta de Handbol:(S/N) ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Gosta de Nataï¿½ï¿½o:(S/N) ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Gosta de Ciclismo:(S/N) ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Gosta de Atletismo:(S/N) ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Gosta de Musculaï¿½ï¿½o:(S/N) ";
+		cin >> var;
+		dataFile<< var << "\n";
+		dataFile.close();
+	}else{
+		cout << "ERROR";
 	}
-}
+	}
+	
+void productRegisterText(){
+	ofstream dataFile;
+	string var;
+	dataFile.open("data/productData.txt", std::ios_base::app);
+	if(dataFile.is_open()){
+		cout << "Qual a descriï¿½ï¿½o do produto: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Qual o modelo do produto: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Qual a marca do produto: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Qual o tamanho do produto: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Qual a cor do produto: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Qual o preï¿½o do produto: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		dataFile.close();
+	}else{
+		cout << "ERROR";
+	}}
+	
+void productItemResgisterText(){
+	ofstream dataFile;
+	string var;
+	dataFile.open("data/productItemData.txt", std::ios_base::app);
+	if(dataFile.is_open()){
+		cout << "Qual o produto: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Qual a data da compra: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Qual o valor da compra: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Qual a situação: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		dataFile.close();
+	}else{
+		cout << "ERROR";
+	}}
+
+void salesRegisterText(){
+	ofstream dataFile;
+	string var;
+	dataFile.open("data/saleData.txt", std::ios_base::app);
+	if(dataFile.is_open()){
+		cout << "Qual o produto: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Para qual Cliente: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Qual o valor da Venda: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Qual a data da Venda: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Qual a data de Recebimento: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		cout << "Qual a situação: ";
+		cin >> var;
+		dataFile<< var << "\n";
+		dataFile.close();
+	}else{
+		cout << "ERROR";
+	}}
+
 
 
 user userRegister(){
@@ -129,7 +262,7 @@ productItem productItemRegister(){
 	cin >> Item.dataCompra;
 	cout << "Qual o valor da compra: ";
 	cin >> Item.valorCompra;
-	cout << "Qual a situaÃ§Ã£o do produto: ";
+	cout << "Qual a situaï¿½ï¿½o do produto: ";
 	cin >> Item.situacao;
 	return Item;
 }
@@ -171,7 +304,7 @@ void sellsList(vector<sale> salesVector){
 		cout << "Valor da Venda:      " << salesVector[i].valorVenda << "\n";
 		cout << "Data da Venda:       " << salesVector[i].dataVenda << "\n";
 		cout << "Data de Recebimento: " << salesVector[i].dataRecebimento << "\n";
-		cout << "SituaÃ§Ã£o:            " << salesVector[i].situacao << "\n";
+		cout << "Situaï¿½ï¿½o:            " << salesVector[i].situacao << "\n";
 	}
 	cout << "\n";
 }
@@ -216,6 +349,9 @@ int main(){
 			break;
 		case 7:
 			return 0;
+		case 8:
+			salesRegisterText();
+			break;
 		default:
 			cout << "Opï¿½ï¿½o Invï¿½lida";
 			break;
