@@ -3,55 +3,10 @@
 #include <vector>
 #include <fstream>
 #include "includes/txtRepository/txtRepository.cpp"
+#include "includes/dataStructure/dataStructure.h"
 
 using namespace std;
 
-struct user
-{
-	string nome;
-	double cpf;
-	string sexo;
-	string dataAniversario;
-	string endereco;
-	string timeFavorito;
-	string selecaoFavorita;
-	bool gostaFutebol;
-	bool gostaVolei;
-	bool gostaBasquete;
-	bool gostaHandbol;
-	bool gostaNatacao;
-	bool gostaCiclismo;
-	bool gostaAtletismo;
-	bool gostaMusculacao;
-};
-
-struct product
-{
-	string descricao;
-	string modelo;
-	string marca;
-	string tamanho;
-	string cor;
-	float preco;
-};
-
-struct productItem
-{
-	string produto;
-	string dataCompra;
-	float valorCompra;
-	string situacao;
-};
-
-struct sale
-{
-	string produto;
-	string cliente;
-	float valorVenda;
-	string dataVenda;
-	string dataRecebimento;
-	string situacao;
-};
 
 bool checkSN(char op){
 	if (toupper(op) == 'S'){
@@ -166,7 +121,7 @@ void productsList(vector<product> productsVector){
 }
 
 void sellsList(vector<sale> salesVector){
-	for(int i = 0; i < salesVector.size(); i++){
+	for(int i = 10; i > 0; i--){
 		cout << "\n" << "Produto:             " << salesVector[i].produto << "\n";
 		cout << "Cliente:             " << salesVector[i].cliente << "\n";
 		cout << "Valor da Venda:      " << salesVector[i].valorVenda << "\n";
@@ -198,28 +153,25 @@ int main(){
 		switch(i)
 		{
 		case 1:
-			usersVector.push_back(userRegister());
+			userRegisterText();
 			break;
 		case 2:
-			productsVector.push_back(productRegister());
+			productRegisterText();
 			break;
 		case 3:
-			productItensVector.push_back(productItemRegister());
+			productItemResgisterText();
 			break;
 		case 4:
-			salesVector.push_back(salesRegister());
+			salesRegisterText();
 			break;
 		case 5:
-			productsList(productsVector);
+			productsList(productStructure());
 			break;
 		case 6:
-			sellsList(salesVector);
+			sellsList(salesStructure());
 			break;
 		case 7:
 			return 0;
-		case 8:
-			salesRegisterText();
-			break;
 		default:
 			cout << "Op��o Inv�lida";
 			break;

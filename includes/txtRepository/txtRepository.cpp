@@ -3,14 +3,68 @@
 #include <locale.h>
 #include <vector>
 #include <fstream>
-
+#include "../dataStructure/dataStructure.cpp"
+#include "../dataStructure/dataStructure.h"
+#include <string>
 
 using namespace std;
+
+vector<string> readFile(string path){
+	ifstream dataFile;
+	vector<string> dataVectorTXT;
+	string line;
+	dataFile.open(path.c_str());
+	while(getline(dataFile, line)){
+		dataVectorTXT.push_back(line);
+	}
+	return dataVectorTXT;
+}
+
+
+vector<sale> salesStructure(){
+	vector<string> dataVectorTXT;
+	vector<sale> dataVector;
+	sale Venda;
+	int i;
+	dataVectorTXT = readFile("data/saleData.txt");
+	for(i=0;i< (dataVectorTXT.size()); i = i + 6){
+		Venda.produto = dataVectorTXT[i];
+		Venda.cliente = dataVectorTXT[i+1];
+		Venda.valorVenda = dataVectorTXT[i+2];
+		Venda.dataVenda = dataVectorTXT[i+3];
+		Venda.dataRecebimento = dataVectorTXT[i+4];
+		Venda.situacao = dataVectorTXT[i+5];
+		dataVector.push_back(Venda);
+	}
+	return dataVector;
+}
+
+
+vector<product> productStructure(){
+	vector<string> dataVectorTXT;
+	vector<product> dataVector;
+	product Produto;
+	int i;
+	dataVectorTXT = readFile("data/productData.txt");
+	for(i = 0; i < (dataVectorTXT.size()); i = i +6){
+		Produto.descricao = dataVectorTXT[i];
+		Produto.modelo = dataVectorTXT[i+1];
+		Produto.marca = dataVectorTXT[i+2];
+		Produto.tamanho = dataVectorTXT[i+3];
+		Produto.cor = dataVectorTXT[i+4];
+		Produto.preco = dataVectorTXT[i+5];
+		dataVector.push_back(Produto);
+	}
+	return dataVector;
+	
+	
+}
+
 
 void userRegisterText(){
 	ofstream dataFile;
 	string var;
-	dataFile.open("../../data/userData.txt", std::ios_base::app);
+	dataFile.open("data/userData.txt", std::ios_base::app);
 	if(dataFile.is_open()){
 		cout << "Success \n";
 		cout << "Qual o nome da pessoa: ";
@@ -64,7 +118,7 @@ void userRegisterText(){
 void productRegisterText(){
 	ofstream dataFile;
 	string var;
-	dataFile.open("../../data/productData.txt", std::ios_base::app);
+	dataFile.open("data/productData.txt", std::ios_base::app);
 	if(dataFile.is_open()){
 		cout << "Qual a descri��o do produto: ";
 		cin >> var;
@@ -92,7 +146,7 @@ void productRegisterText(){
 void productItemResgisterText(){
 	ofstream dataFile;
 	string var;
-	dataFile.open("../../data/productItemData.txt", std::ios_base::app);
+	dataFile.open("data/productItemData.txt", std::ios_base::app);
 	if(dataFile.is_open()){
 		cout << "Qual o produto: ";
 		cin >> var;
@@ -114,7 +168,7 @@ void productItemResgisterText(){
 void salesRegisterText(){
 	ofstream dataFile;
 	string var;
-	dataFile.open("../../data/saleData.txt", std::ios_base::app);
+	dataFile.open("data/saleData.txt", std::ios_base::app);
 	if(dataFile.is_open()){
 		cout << "Qual o produto: ";
 		cin >> var;
